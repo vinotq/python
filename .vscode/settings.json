@@ -1,8 +1,8 @@
 {
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.testing.pytestEnabled": true,
-    "files.autoSave": "afterDelay",
-    "python.languageServer": "Pylance",
+    "files.autoSave": "off",
+    "python.languageServer": "Jedi",
     "rewrap.wrappingColumn": 80,
     "git.autofetch": true,
     "diffEditor.renderSideBySide": true,
