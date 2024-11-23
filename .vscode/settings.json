@@ -1,7 +1,7 @@
 {
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.testing.pytestEnabled": true,
-    "files.autoSave": "off",
+    "files.autoSave": "afterDelay",
     "python.languageServer": "Jedi",
     "rewrap.wrappingColumn": 80,
     "git.autofetch": true,
