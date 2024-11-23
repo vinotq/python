@@ -1,10 +1,13 @@
 from __future__ import annotations
 from enum import Enum
 from typing import Any
+from json import dumps, loads
+
 
 class Status(Enum):
     IN_STOCK = 0
     ISSUED = 1
+
 
 class Book:
     def __init__(self, id: int, title: str, author: str, year: int):
@@ -28,6 +31,15 @@ class Book:
 
     def __str__(self):
         return f"{self.id} {self.title} {self.author} {self.year} {self.status}"
+
+    def dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "author": self.author,
+            "year": self.year,
+            "status": self.status.value,
+        }
 
 
 class Library:
@@ -80,18 +92,27 @@ class Library:
 
         self.__books[id].status = status
 
+    def saveLibrary(self, path: str):
+        with open(path, "w") as file:
+            dict_lib = {"increment": self.__id_increment, "books": []}
+            for book in self.__books.values():
+                dict_lib["books"].append(book.dict())
 
-if __name__ == "__main__":
-    library = Library()
-    library.addBook("The Great Gatsby", "F. Scott Fitzgerald", 1925)
-    library.addBook("The Catcher in the Rye", "J.D. Salinger", 1951)
-    library.addBook("1984", "George Orwell", 1949)
-    print(library)
-    print("---------------------")
-    library.changeBookStatus(0, 1)
-    print(library)
-    print("---------------------")
-    library.changeBookStatus(0, Status.IN_STOCK)
-    print(library)
+            file.write(dumps(dict_lib))
+
+        print(f"Library saved to {path}")
+
+    def loadLibrary(self, path: str):
+        with open(path, "r") as file:
+            dict_lib = loads(file.read())
+            self.__id_increment = dict_lib["increment"]
+
+            for book in dict_lib["books"]:
+                self.__books[book["id"]] = Book(
+                    book["id"],
+                    book["title"],
+                    book["author"],
+                    book["year"]
+                )
 
 

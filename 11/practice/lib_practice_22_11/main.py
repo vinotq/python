@@ -1,11 +1,20 @@
-from main import Library
+from app.main import Library, Status
 
 if __name__ == "__main__":
     library = Library()
-    library.addBook("The Great Gatsby", "F Scott Fitzgerald", 1925)
+    print("---------------------\nBooks in lib")
+    library.addBook("The Great Gatsby", "F. Scott Fitzgerald", 1925)
     library.addBook("The Catcher in the Rye", "J.D. Salinger", 1951)
     library.addBook("1984", "George Orwell", 1949)
     print(library)
-    print("---------------------")
+    print("---------------------\n\nChange book status")
     library.changeBookStatus(0, 1)
+    print(library)
+    print("---------------------\n\nChange book status again")
+    library.changeBookStatus(0, Status.IN_STOCK)
+    print(library)
+    print("---------------------\n\nSaving lib")
+    library.saveLibrary("11/practice/lib_practice_22_11/lib.json")
+    print("---------------------\n\nLoading lib")
+    library.loadLibrary("11/practice/lib_practice_22_11/lib.json")
     print(library)
