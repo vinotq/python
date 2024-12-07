@@ -20,7 +20,9 @@
   "vsintellicode.sql.completionsEnabled": false,
   "githubIssues.issueBranchTitle": "feature/${issueNumber}_${sanitizedIssueTitle}",
   "errorLens.messageEnabled": false,
-  "cSpell.words": ["инкапсулирует"],
+  "cSpell.words": [
+    "инкапсулирует"
+  ],
   "editor.defaultFormatter": "ms-python.autopep8",
   "cSpell.enabledSchemes": {
     "vscode-notebook-cell": false
@@ -30,5 +32,8 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
