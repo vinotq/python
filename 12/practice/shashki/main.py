@@ -42,6 +42,7 @@ class Game:
             from_pos = input("Choose checker: ")
             x = ord(from_pos[0].upper()) - ord('A')
             y = 7 - ord(from_pos[1]) + ord("1")
+            
             while (
                 not 0 <= x <= 7
                 or not 0 <= y <= 7
